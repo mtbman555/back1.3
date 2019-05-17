@@ -61,3 +61,11 @@ exports.getUserById = async (value) => {
         pw2: value.pw
     })
 }
+
+exports.loginByUser = async (value) => {
+    return await userModel.findOne({
+        id: value.id,
+        pw: value.pw,
+    })
+}
+

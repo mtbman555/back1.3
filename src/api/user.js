@@ -10,17 +10,9 @@ router.get('/all', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const body = req.body
-    let user = await userModel.getUserById(body)
-    console.log(user)
-    console.log(body)
-    if (user[0].id == body.id) {
-        if (user[0].pw == body.pw) {
-            if (user[0].pw2 == body.pw) {
-                console.log(true)
-            }
-        }
-    }
-    res.status(200).json()
+    let user = await userModel.loginByUser(body)
+
+    res.status(200).send(user)
 })
 
 router.post('/', async (req, res) => {
